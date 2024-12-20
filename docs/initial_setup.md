@@ -1,9 +1,12 @@
-# After install
+# Initial Setup
+
 Run post-pve-install
 - https://community-scripts.github.io/ProxmoxVE/scripts?id=post-pve-install 
+
 Add to tailscale
 - ``curl -fsSL https://tailscale.com/install.sh | sh``
 - ``tailscale up --accept-dns=false --advertise-exit-node --ssh --advertise-routes 10.10.10.0/24``
+
 Enable routing
 ```
 echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
