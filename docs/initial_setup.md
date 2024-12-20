@@ -154,9 +154,11 @@ round-trip min/avg/max/stddev = 136.909/144.345/149.107/4.120 ms
 Enable NAT
 
 ```
-iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o vmbr1 -j MASQUERADE\niptables -A FORWARD -i vmbr0 -o vmbr1 -j ACCEPT\niptables -A FORWARD -i vmbr1 -o vmbr0 -m state --state RELATED,ESTABLISHED -j ACCEPT\n
-apt install iptables-persistent\n
-iptables-save > /etc/iptables/rules.v4\n
+iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o vmbr1 -j MASQUERADE
+iptables -A FORWARD -i vmbr0 -o vmbr1 -j ACCEPT
+iptables -A FORWARD -i vmbr1 -o vmbr0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+apt install iptables-persistent
+iptables-save > /etc/iptables/rules.v4
 ```
 
 
@@ -185,3 +187,4 @@ PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
 rtt min/avg/max/mdev = 5.415/5.552/5.636/0.082
 ```
 
+You can tear down the vm now and move onto building the cloud-init

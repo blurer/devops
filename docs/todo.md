@@ -1,8 +1,11 @@
 # To Do:
-- [ ] Automate VM creation (terraform)
-- [ ] Autommate VM provision (ansible)
-- [ ] Grafana
-- [ ] Postgres
+- [ ] Build cloud-init
+- [ ] Build terraform to launch the base image
+- [ ] Build ansible to provision
+	- [ ] pihole
+	- [ ] bind
+	- [ ] postgres
+	- [ ] Grafana
 - [ ] HomeWAN Monitoring (externally)
 - [ ] Push stats from home network to svr
 - [ ] 
