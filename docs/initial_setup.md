@@ -100,5 +100,6 @@ Add to Proxmox host
 	- Directory: /mnt/vm_data
 	- Content: disk image, vzdump backup file, container
 
-![[attachments/proxmox-storage.png]]
+
+![proxmox-storage](attachments/proxmox-storage.png)
 
