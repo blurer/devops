@@ -14,6 +14,10 @@ Hardware Data:
 - Disk /dev/sdc: 2000 GB (=> 1863 GiB) 
 - Total capacity 2816 GiB with 3 Disks
 
+After OS is installed, go through [initial setup](initial_setup.md)
+
+
+
 Disk Setup:
 
 ```
