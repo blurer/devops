@@ -1,15 +1,15 @@
-# Toplology
+## Docs
+- After OS is installed, go through [initial setup](docs/initial_setup.md)
+- To do list here: [to do](docs/todo.md)
 
-Terrible network diagram
+## Topology
+
+Terrible network diagram, version 0.1
 
 ![terrible_diagram](docs/n25.drawio.png)
 
 
-
-After OS is installed, go through [initial setup](docs/initial_setup.md)
-To do list here: [to do](docs/todo.md)
-
-# VMs
+## VMs
 
 | name             | service           | subtype      | virt-type | os       | vcpu | memory | rootfs | data-path                  | data-quota | ip         | internal-dns                | service-dns             | service-role | vrrp | vrrp-ip   | host dns  | service_ip |
 | ---------------- | ----------------- | ------------ | --------- | -------- | ---- | ------ | ------ | -------------------------- | ---------- | ---------- | --------------------------- | ----------------------- | ------------ | ---- | --------- | --------- | ---------- |
@@ -26,14 +26,9 @@ To do list here: [to do](docs/todo.md)
 | k3s-worker-1-110 | k3s               | k3s-worker-1 | lxc       | debian12 | 1    | 1024   | 8      | /mnt/data/k3s-worker-1-110 | 8          | 10.2.2.110 | k3s-worker-1-110.blurer.net | k3s-worker-1.blurer.net | n/a          | n/a  | n/a       | 10.2.2.10 | 110        |
 | k3s-worker-2-111 | k3s               | k3s-worker-2 | lxc       | debian12 | 1    | 1024   | 8      | /mnt/data/k3s-worker-2-111 | 8          | 10.2.2.111 | k3s-worker-2-111.blurer.net | k3s-worker-2.blurer.net | n/a          | n/a  | n/a       | 10.2.2.10 | 111        |
 
-## DNS
+## Containers
 
-
-# Containers
-
-
-| container name      | hostname                   | host           | function               | ports          |
-|---|---|---|---|---|
-| TBD|TBD|TBD|TBD|TBD|
-
+| container name | hostname | host | function | ports |
+| -------------- | -------- | ---- | -------- | ----- |
+| TBD            | TBD      | TBD  | TBD      | TBD   |
 
