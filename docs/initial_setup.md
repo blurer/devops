@@ -102,4 +102,86 @@ Add to Proxmox host
 
 
 ![proxmox-storage](attachments/proxmox-storage.png)
+## Create network and bridge
+ Need to create vmbr0 and vmbr1, swing the wanip to vmbr0 and create 10.10.10.0/24 on vmbr1.
+
+```
+auto lo
+iface lo inet loopback
+
+# WAN bridge
+auto vmbr1
+iface vmbr1 inet static
+    address {wan_ip}/{wan_mask}
+    gateway {wan_gw}
+    bridge-ports enp0s31f6
+    bridge-stp off
+    bridge-fd 0
+    up route add -net {wan_ip} netmask 255.255.255.192 gw {wan_gw} dev vmbr1
+
+
+iface vmbr1 inet6 static
+    address {ipv6_addr}
+    gateway fe80::1
+
+# LAN bridge
+auto vmbr0
+iface vmbr0 inet static
+    address 10.10.10.1/24
+    bridge-ports none
+    bridge-stp off
+    bridge-fd 0
+
+```
+
+After added, hold your beer and restart network, ``systemctl restart networking`` then try to ping the inside subnet (10.10.10.1).
+``
+```
+# bl @ Bryans-MacBook-Pro in ~/Documents/obsidian/devops on git:main x [13:58:45] 
+$ ping 10.10.10.1 -c 5
+PING 10.10.10.1 (10.10.10.1): 56 data bytes
+64 bytes from 10.10.10.1: icmp_seq=0 ttl=64 time=136.909 ms
+64 bytes from 10.10.10.1: icmp_seq=1 ttl=64 time=146.921 ms
+64 bytes from 10.10.10.1: icmp_seq=2 ttl=64 time=144.034 ms
+64 bytes from 10.10.10.1: icmp_seq=3 ttl=64 time=144.756 ms
+64 bytes from 10.10.10.1: icmp_seq=4 ttl=64 time=149.107 ms
+
+--- 10.10.10.1 ping statistics ---
+5 packets transmitted, 5 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 136.909/144.345/149.107/4.120 ms
+```
+
+Enable NAT
+
+```
+iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o vmbr1 -j MASQUERADE\niptables -A FORWARD -i vmbr0 -o vmbr1 -j ACCEPT\niptables -A FORWARD -i vmbr1 -o vmbr0 -m state --state RELATED,ESTABLISHED -j ACCEPT\n
+apt install iptables-persistent\n
+iptables-save > /etc/iptables/rules.v4\n
+```
+
+
+## Test 
+
+Create a test vm with the following:
+
+```
+network: 10.10.10.10/24
+gateway: 10.10.10.1
+dns: 1.1.1.1
+```
+
+And test that you can ping outbound:
+
+```
+[root@test-vm ~]# ping 1.1.1.1 -c 4
+PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
+64 bytes from 1.1.1.1: icmp_seq=1 ttl=57 time=5.42 ms
+64 bytes from 1.1.1.1: icmp_seq=2 ttl=57 time=5.64 ms
+64 bytes from 1.1.1.1: icmp_seq=3 ttl=57 time=5.59 ms
+64 bytes from 1.1.1.1: icmp_seq=4 ttl=57 time=5.57 ms
+
+--- 1.1.1.1 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3005ms
+rtt min/avg/max/mdev = 5.415/5.552/5.636/0.082
+```
 
