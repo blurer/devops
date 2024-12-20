@@ -1,0 +1,6 @@
+[vms]
+pihole ansible_host=10.10.10.10
+apt-cache-ng ansible_host=10.10.10.11
+nginxproxymanager ansible_host=10.10.10.12
+postgresql ansible_host=10.10.10.13
+pocketbase ansible_host=10.10.10.14
