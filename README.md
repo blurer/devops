@@ -56,6 +56,8 @@ sdc                 8:32   0   1.8T  0 disk
 | k3s-worker-1-110 | k3s               | k3s-worker-1 | lxc       | debian12 | 1    | 1024   | 8      | /mnt/data/k3s-worker-1-110 | 8          | 10.2.2.110 | k3s-worker-1-110.blurer.net | k3s-worker-1.blurer.net | n/a          | n/a  | n/a       | 10.2.2.10 | 110        |
 | k3s-worker-2-111 | k3s               | k3s-worker-2 | lxc       | debian12 | 1    | 1024   | 8      | /mnt/data/k3s-worker-2-111 | 8          | 10.2.2.111 | k3s-worker-2-111.blurer.net | k3s-worker-2.blurer.net | n/a          | n/a  | n/a       | 10.2.2.10 | 111        |
 
+## DNS
+
 
 # Containers
 
@@ -65,10 +67,3 @@ sdc                 8:32   0   1.8T  0 disk
 | TBD|TBD|TBD|TBD|TBD|
 
 
-# To Do:
-- [ ] Automate VM creation (terraform)
-- [ ] Autommate VM provision (ansible)
-- [ ] Grafana
-- [ ] Postgres
-- [ ] HomeWAN Monitoring (externally)
-- [ ] Push stats from home network to svr
