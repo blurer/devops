@@ -15,6 +15,7 @@ Hardware Data:
 - Total capacity 2816 GiB with 3 Disks
 
 Disk Setup:
+
 ```
 NAME              MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
 sda                 8:0    0 476.9G  0 disk  
@@ -39,6 +40,7 @@ sdc                 8:32   0   1.8T  0 disk
 
 # VMs
 
+```
 | name             | service           | subtype      | virt-type | os       | vcpu | memory | rootfs | data-path                  | data-quota | ip         | internal-dns                | service-dns             | service-role | vrrp | vrrp-ip   | host dns  | service_ip |
 | ---------------- | ----------------- | ------------ | --------- | -------- | ---- | ------ | ------ | -------------------------- | ---------- | ---------- | --------------------------- | ----------------------- | ------------ | ---- | --------- | --------- | ---------- |
 | db-102           | postgres          | db           | lxc       | debian12 | 0.5  | 1024   | 8      | /mnt/data/postres          | 80         | 10.2.2.102 | db-102.blurer.net           | db.blurer.net           | primary      | 100  | 10.2.2.12 | 10.2.2.10 | 102        |
@@ -53,13 +55,15 @@ sdc                 8:32   0   1.8T  0 disk
 | k3s-master-109   | k3s               | k3s-master   | lxc       | debian12 | 2    | 2048   | 16     | /mnt/data/k3s-master-109   | 16         | 10.2.2.109 | k3s-master-109.blurer.net   | k3s-master.blurer.net   | n/a          | n/a  | n/a       | 10.2.2.10 | 109        |
 | k3s-worker-1-110 | k3s               | k3s-worker-1 | lxc       | debian12 | 1    | 1024   | 8      | /mnt/data/k3s-worker-1-110 | 8          | 10.2.2.110 | k3s-worker-1-110.blurer.net | k3s-worker-1.blurer.net | n/a          | n/a  | n/a       | 10.2.2.10 | 110        |
 | k3s-worker-2-111 | k3s               | k3s-worker-2 | lxc       | debian12 | 1    | 1024   | 8      | /mnt/data/k3s-worker-2-111 | 8          | 10.2.2.111 | k3s-worker-2-111.blurer.net | k3s-worker-2.blurer.net | n/a          | n/a  | n/a       | 10.2.2.10 | 111        |
+```
 
 # Containers
 
+```
 | container name      | hostname                   | host           | function               | ports          |
 |---|---|---|---|---|
 | TBD|TBD|TBD|TBD|TBD|
-
+```
 
 # To Do:
 - [ ] Automate VM creation (terraform)
