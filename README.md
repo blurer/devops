@@ -6,7 +6,7 @@
 
 Terrible network diagram, version 0.1
 
-![terrible_diagram](docs/n25.drawio.png)
+![terrible_diagram](docs/attachments/n25.drawio.png)
 
 
 ## VMs
